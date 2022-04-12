@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Todo } from 'src/app/models/Todo';
 import { Observable } from 'rxjs';
 import { select, Store } from '@ngrx/store';
+import { TodoRemove } from 'src/app/actions/todo.actions';
 
 @Component({
   selector: 'app-todo',
@@ -16,6 +17,9 @@ export class TodoComponent implements OnInit {
       this.todos = values;
       console.log(values);
     });
+  }
+  removeTodo(index: number) {
+    this.store.dispatch(new TodoRemove(index))
   }
 
   ngOnInit(): void {}
